@@ -1,0 +1,68 @@
+{% extends "student_profile/base.html" %}
+{% load static %} {% load crispy_forms_tags %}
+{% block scripts %}
+{% endblock %}
+{% block content %}
+{% include "student_profile/partials/authNav.html" %}
+<div class="row">
+  <div class="col-md-7 m-1 card">
+    <p class="card-description p-4">
+      {{ user.username }}
+      <code>Previous Submitted Assignment</code>
+    </p>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                Unit Name |  Unit Code
+              </th>
+              <th>
+                Date Submited
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for assignments in assignments_student %}
+            <tr>
+              <td class="py-1">
+              {{ assignments.unit }}
+              </td>
+              <td>
+              {{ assignments.timestamp|timesince }}
+              </td>
+            </tr>            
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 m-1 card">
+    <p class="card-description p-4">
+      {{ user.username }}
+      <code>Upload Assignment::</code>
+    </p>
+    <div class="card-body">
+    {% if messages %}
+        {% for  message in messages %}
+            <div class="alert alert-{{message.tags}}">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+        <form action="" method="POST" enctype="multipart/form-data">
+          <p class="text-danger">Make Sure You Have Updated Your Profile</p>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary submit-btn btn-block">Upload</button>
+            </div>                
+        </form>
+    </div>
+  </div>
+
+</div>
+{% include "student_profile/partials/authFooter.html" %} 
+{% endblock %}

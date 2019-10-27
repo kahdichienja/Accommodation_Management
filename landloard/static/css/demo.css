@@ -1,0 +1,143 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:200,300,400,700);
+
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+
+
+/* Dummy elements */
+.dummy {
+	text-align: left;
+	padding: 1em;
+	min-height: 300px;
+	margin: 0 auto;
+	font-weight: 300;
+}
+
+.dummy-text {
+	max-width: 1000px;
+	font-size: 1.65em;
+}
+
+.info {
+	margin: 0 auto;
+	text-align: center;
+	max-width: 600px;
+	font-size: 13px;
+	padding: 2em 0;
+}
+
+.dummy-text p {
+	margin-top: 0;
+	line-height: 1.8;
+	text-align: justify;
+}
+
+.dummy-text h3 {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 1em;
+	margin: 2em 0 1em;
+}
+
+.dummy-menu {
+	max-width: 100%;
+	padding: 4em 1em;
+}
+
+.dummy-menu ul,
+.dummy-team ul {
+	list-style: none;
+	text-align: center;
+	padding: 0;
+	margin: 0 0 3em;
+}
+
+.dummy-menu ul li {
+	display: inline-block;
+	position: relative;
+	margin: 0 1em;
+	font-size: 1.5em;
+}
+
+.dummy-menu ul li a {
+	display: inline-block;
+	font-weight: 700;
+	padding: 0.15em 0.25em 0;
+	-webkit-transition: color 0.3s;
+	transition: color 0.3s;
+}
+
+.dummy-menu-icons ul li {
+	width: 2em;
+	height: 2em;
+	font-size: 2em;
+	line-height: 1.75;
+}
+
+.dummy-image {
+	position: relative;
+}
+
+.dummy blockquote {
+	font-family: 'Kalam', cursive;
+	font-size: 2.5em;
+	max-width: 700px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.dummy blockquote footer {
+	font-size: 0.5em;
+}
+
+.dummy blockquote footer::before {
+	content: '—';
+}
+
+.dummy-avatar {
+	margin-top: 7em;
+	text-align: center;
+}
+
+.dummy-avatar > div {
+	display: inline-block;
+	margin: 0 1em;
+}
+
+.dummy-avatar a {
+	margin: 0 auto;
+	display: block;
+	text-align: center;
+	-webkit-transition: color 0.3s;
+	transition: color 0.3s;
+}
+
+.dummy-avatar a img {
+	border-radius: 50%;
+}
+
+.dummy-avatar a h4 {
+	margin: 0.25em 0;
+	line-height: 1;
+	font-size: 1.75em;
+	font-weight: 400;
+}
+
+@media screen and (max-width: 27em) {
+	.codrops-icon {
+		font-size: 1.5em;
+	}
+	.codrops-icon span {
+		display: none;
+	}
+}

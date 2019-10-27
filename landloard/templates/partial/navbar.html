@@ -1,0 +1,89 @@
+{% load static %}
+    <!-- Navbar  -->
+    <div class="navbar-fixed">
+        <nav class="hoverable" style="background-color: #3367d6;">
+            <div class="nav-wrapper">
+                {% if request.user.is_authenticated %}
+                    <a href="/management/dashboard/" class="brand-logo left" style="margin-left: 2.5rem;"> Dashboard</a>
+                {% else %}
+                    <a href="" class="brand-logo left" style="margin-left: 4rem;"> UAS</a>
+                    <img src="{% static 'img/uas-logo.jpg' %}" class="responsive-img" style="height: 50px; width: 50px; border-radius: 60%; margin: 5px;" alt="">
+                {% endif %}
+                <a href="#" data-target="my-side-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right">
+                {% if request.user.is_authenticated %}
+                    <li><a href=""><i class="material-icons">search</i></a></li>
+                    <li><a href="/management/dashboard/"><i class="material-icons">view_module</i></a></li>
+                    <li><a href=""><i class="material-icons">refresh</i></a></li>
+                    <li><a href="/management/logout/"><i class="material-icons">visibility_off</i></a></li>
+                    <li>
+                        <a href="/management/profile/">
+                            <img class="responsive-img" style="height: 40px; width: 40px; border-radius: 50%;margin-top: 10px;" src="/management{{ user.landlordprofile.your_picture.url}}">
+                        </a>
+                    </li>
+                {% else %}
+                    
+                    <li><a href="/management/login/">SignIn</a></li>
+                    <li><a href="/management/register/">SignUp</a></li>
+                {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+    {% if request.user.is_authenticated %}
+    <ul class="sidenav" id="my-side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="{% static 'img/bg.jpeg' %}">
+                </div>
+                <a href="#user"><img class="circle" src="/management{{ user.landlordprofile.your_picture.url}}"></a>
+                <a href="#name"><span class="white-text name">{{user.username}}</span></a>
+                <a href="#email"><span class="white-text email">{{user.email}}</span></a>
+            </div>
+        </li>
+        <ul class="collapsible">
+            <li class="active">
+                <div class="collapsible-header"><i class="material-icons">person_pin</i>Profile</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a href="/management/profile/"><i class="material-icons">person</i>My Profile</a></li>
+                        <li><a href="/management/hostelprofile/"><i class="material-icons">person_pin</i>Hostel Profile</a></li>
+                    </ul>                        
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">dashboard</i>Dashboard</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a href="/management/dashboard/"><i class="material-icons">person_pin</i>Single Room Payments</a></li>
+                        <li><a href="/management/dashboard/"><i class="material-icons">people</i>Double Room Payment</a></li>
+                    </ul>                        
+                </div>
+            </li>
+            <li>
+                <a class="collapsible-header waves-effect black-text modal-trigger" href="#hostel_plan" ><i class="material-icons black-text">mode_edit</i>Add Hostel Payment Components</a>
+            </li>
+        </ul>
+        <div class="divider"></div>
+        <li><a href=""><i class="material-icons">security</i>Hostel Policy</a></li>
+        <li><a href=""><i class="material-icons">sync</i>Terms And Condition</a></li>
+        <li><a href="/management/logout/"><i class="material-icons">visibility_off</i>logout</a></li>
+    </ul>
+    {% else %}
+    <ul class="sidenav" id="my-side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="{% static 'img/bg.jpeg' %}">
+                </div>
+                <a href="#user"><img class="circle" src="{% static 'img/user.jpeg' %}"></a>
+                <a href="#name"><span class="white-text name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div>
+        </li>
+        <li><a href="/management/register/"><i class="material-icons">group_add</i>Register</a></li>
+        <li><a href="/management/login/"><i class="material-icons">lock_open</i>login</a></li>
+    </ul>
+    {% endif %}
+    <!-- End navbar -->

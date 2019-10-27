@@ -1,0 +1,299 @@
+{% load static %}
+<!-- hostel homepage -->
+<div id="hostel_homepage" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Hostel Homepage</h4>
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <form class="col s12" action="." method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                        {% csrf_token %}
+                            <div class="input-field col s12">
+                                <input class="validate" name="hostel_name" hidden value="{{ user.landlordprofile.id }}" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                                {{hostelhompageform.welcoming_message}}
+                                <label for="icon_prefix">Hostel Welcoming Message To Client Or Tenats</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons light-blue-text">camera</i>
+                                <input type="file" name="background_image" accept="image/*" required id="id_background_image">
+                                <label for="id_background_image">Home Page Background Image</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light" type="submit">
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end hostel homepage -->
+
+<!-- hostel services -->
+<div id="hostel_services" class="modal" style="height: 100vh; width:100vw;">
+    <div class="modal-content">
+        <h4>Hostel Services</h4>
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <form class="col s12" action="." method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input class="validate" name="hostel_name" hidden value="{{ user.landlordprofile.id }}" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">location_city</i>
+                                {{hostelserviceform.total_no_of_rooms}}
+                                <label for="icon_prefix">Total Number Of Rooms.</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix light-blue-text">security</i>
+                                    {{hostelserviceform.security}}
+                                    <label for="icon_prefix">Discribe Your Hostel Privacy.</label>
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                                {{hostelserviceform.water_supply}}
+                                <label for="icon_prefix">Describe Hostel Water Source</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">location_city</i>
+                                {{hostelserviceform.power_supply}}
+                                <label for="icon_prefi">Describe Hostel Power Source</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                                {{hostelserviceform.bed_size}}
+                                <label for="icon_prefix">Describe Type Of Bed Your Hostel Have...eg bed size.</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">home</i>
+                                {{hostelserviceform.room_size}}
+                                <label for="icon_prefix">Describe Room Size.</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                                {{hostelserviceform.table_and_chair_availabitity}}
+                                <label for="icon_prefix">Describe If You Offer Tables and Chairs.</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light" type="submit">
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end hostel homepage -->
+<!-- hostel contact -->
+<div id="hostel_contact" class="modal">
+    <div class="modal-content">
+        <h4>Hostel Contact</h4>
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <form class="col s12" method="POST" action=".">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input class="validate" name="hostel_name" hidden value="{{ user.landlordprofile.id }}" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">dialpad</i>
+                                {{hostelcontact.hostel_phone_number}}
+                                <label for="i_prefix">Phone Number</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">payment</i>
+                                {{hostelcontact.payment_method}}
+                                <label for="i_prefix">Payment Method.</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">mail</i>
+                                {{hostelcontact.hostel_mail}}
+                                <label for="id_hostel_mail">Email Address</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">add_location</i>
+                                {{hostelcontact.hostel_address}}
+                                <label for="i_prefix">Hostel Address.</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light" type="submit">
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end hostel contact -->
+<!-- hostel gallery -->
+<div id="hostel_gallery" class="modal">
+    <div class="modal-content">
+        <h4>Hostel Gallery</h4>
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <form class="col s12" method="POST" action="." enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input class="validate" name="hostel_name" hidden value="{{ user.landlordprofile.id }}" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <div class="btn white">
+                                    <i class="material-icons light-blue-text">camera</i>
+                                    {{hostelgalleryform.photo}}
+                                    <label for="icon_prefix2">Upload Hostel Pictures</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                               {{hostelgalleryform.photo_description}}
+                                <label for="icon_prefix">Photo Description</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light" type="submit">
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end hostel gallery -->
+<!-- hostel plan -->
+<div id="hostel_plan" class="modal">
+    <div class="modal-content">
+        <h4>Hostel Plan</h4>
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <form class="col s12" action="." method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                        {% csrf_token %}
+                            <div class="input-field col s12">
+                                <input class="validate" name="hostel_name" hidden value="{{ user.landlordprofile.id }}" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons light-blue-text">payment</i>
+                                {{ hostelplanform.mpesa_shotcode }}
+                                <label for="id_mpesa_shotcode">Pay Bill Number</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                                {{ hostelplanform.single_room_desc }}
+                                <label for="icon_prefix">Single Room Description</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                                {{ hostelplanform.single_room_payment_price }}
+                                <label for="icon_prefix">Single Room Price</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                                {{ hostelplanform.double_room_payment_price }}
+                                <label for="icon_prefix">Double Room Price</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                                {{ hostelplanform.double_room_desc }}
+                                <label for="icon_prefix">Double Room Description.</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                                {{ hostelplanform.self_contained }}
+                                <label for="icon_prefix">Self Contained Description If You Provide.</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix light-blue-text">comment</i>
+                                {{ hostelplanform.self_contained_payment_price }}
+                                <label for="icon_prefix">Self Contained Price If You Have.</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light" type="submit">
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end hostel plan -->

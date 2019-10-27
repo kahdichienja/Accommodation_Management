@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- content -->
+<div class="row">
+    <div class="col l3 hide-on-med-and-down">
+        {% if request.user.is_authenticated %}
+        {% include "partial/full_sidenav.html" %}
+        {% else %}
+
+        {% endif %}
+    </div>
+    <div class="col s12 l6 m12">
+        <ul class="collapsible">
+            <li class="">
+                <div class="collapsible-header">
+                    Hostels Homepage
+                    <span class="badge"><i class="material-icons">arrow_drop_down</i></span>
+                </div>
+                <div class="collapsible-body">
+                    {% for hostelhomepage in hostel_home_page_qs %}
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator responsive-img" src="/management{{ hostelhomepage.background_image.url }}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">
+                                <i class="material-icons light-blue-text">location_city</i> Hostel Name: {{ hostelhomepage.hostel_name }}<i
+                                    class="material-icons light-blue-text right">more_vert</i>
+                            </span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Hostel Name: {{ hostelhomepage.hostel_name }} <i
+                                    class="material-icons light-blue-text right">close</i></span>
+                            <p>My Hostel Is Located At: {{ user.landlordprofile.hostel_location }}</p>
+                            <p>{{ hostelhomepage.welcoming_message }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
+        <ul class="collapsible">
+            <li class="">
+                <div class="collapsible-header">
+                    Hostels Gallery
+                    <span class="badge"><i class="material-icons">arrow_drop_down</i></span>
+                </div>
+                <div class="collapsible-body"> 
+                    {% for gallery in hostel_gallery_qs %}
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator responsive-img" src="/management{{gallery.photo.url}}">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">
+                                    <i class="material-icons light-blue-text">location_city</i> Hostel Name: {{gallery.hostel_name}}<i
+                                        class="material-icons light-blue-text right">more_vert</i>
+                                </span>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Hostel Name: {{gallery.hostel_name}}<i
+                                        class="material-icons light-blue-text right">close</i></span>
+                                
+                                <blockquote>
+                                    <p>{{gallery.photo_description}}</p>
+                                </blockquote>        
+                            </div>
+                        </div>
+                    {% endfor %}
+                        
+                    
+                </div>
+            </li>
+        </ul>
+        <ul class="collapsible">
+            <li class="">
+                <div class="collapsible-header">
+                    Hostels Contact
+                    <span class="badge"><i class="material-icons">arrow_drop_down</i></span>
+                </div>
+                <div class="collapsible-body">
+                    {% for contact in hostel_contact_qs %}
+                        <div class="card">
+                            <blockquote>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">
+                                        <i class="material-icons light-blue-text">location_city</i> Hostel Name: {{ contact.hostel_name }} <i
+                                            class="material-icons light-blue-text right">more_vert</i>
+                                    </span>
+                                </div>
+                                <table class="striped responsive-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Hostel Phone Number</th>
+                                            <th>Hostel Mail</th>
+                                            <th>My Payment Method</th>
+                                            <th>Hostel Address</th>
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody>
+                                        <tr>
+                                            <td>{{contact.hostel_phone_number}}</td>
+                                            <td>{{contact.hostel_mail}}</td>
+                                            <td>{{contact.payment_method}}</td>
+                                            <td>{{contact.hostel_address}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table> 
+                            </blockquote>
+                        </div>
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
+        <ul class="collapsible">
+            <li class="">
+                <div class="collapsible-header">
+                    Hostels services
+                    <span class="badge"><i class="material-icons">arrow_drop_down</i></span>
+                </div>
+                <div class="collapsible-body">
+                    <div class="card">
+                        <div class="card-content activator" style="height: 70vh !important;">
+                            <span class="card-title activator grey-text text-darken-4">
+                                <i class="material-icons light-blue-text">location_city</i> Your Hostel Services: {{user.username}} <i
+                                    class="material-icons light-blue-text right">more_vert</i>
+                            </span>
+                        </div>
+                        
+                        <div class="card-reveal">
+                            {% for service in hostel_service_qs %} 
+                            <span class="card-title grey-text text-darken-4">{{service.hostel_name}}<i class="material-icons light-blue-text right">close</i></span>
+                            <div class="divider"></div>
+                            <blockquote>
+                                <h4>Privacy And Security</h4>
+                                <p>{{service.security}}</p>
+                            </blockquote> 
+                            <blockquote>   
+                                <h4>Water Source</h4>
+                                <p>{{service.water_supply}}</p>
+                            </blockquote> 
+                            <blockquote>   
+                                <h4>Power Source</h4>
+                                <p>{{service.power_supply}}</p>
+                            </blockquote> 
+                            <blockquote>   
+                                <h4>Type Of Bed</h4>
+                                <p>{{service.bed_size}}</p>
+                            </blockquote> 
+                            <blockquote>   
+                                <h4>Room Size</h4>
+                                <p>{{service.room_size}}</p>
+                            </blockquote> 
+                            <blockquote>   
+                                <h4>Furniture</h4>
+                                <p>{{service.table_and_chair_availabitity}}</p>
+                            </blockquote>
+                            {% endfor %}
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col s3 hide-on-med-and-down">
+        <ul class="collapsible">
+            <li class="">
+                <div class="collapsible-header">
+                    <a class="waves-effect grey-text modal-trigger" href="#hostel_homepage">
+                        Click To Add Hostel Home Page
+                        <span class="badge"><i class="material-icons">location_city</i></span>
+                    </a>
+                </div>
+            </li>
+            <li class="">
+                <div class="collapsible-header">
+                    <a class="waves-effect grey-text modal-trigger" href="#hostel_services">
+                        Click To Add Hostel Service
+                        <span class="badge"><i class="material-icons">flag</i></span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">
+                    <a class="waves-effect grey-text modal-trigger" href="#hostel_contact">
+                        Click To Add Hostel Contact
+                        <span class="badge"><i class="material-icons">dialpad</i></span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">
+                    <a class="waves-effect grey-text modal-trigger" href="#hostel_gallery">
+                        Click To Add Hostel Gallery
+                        <span class="badge"><i class="material-icons">camera</i></span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end content -->
+{% endblock %}

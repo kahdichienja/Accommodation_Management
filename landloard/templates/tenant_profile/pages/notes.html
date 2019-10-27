@@ -1,0 +1,54 @@
+{% extends "student_profile/base.html" %}
+{% load static %} {% load crispy_forms_tags %}
+{% block scripts %}
+{% endblock %}
+{% block content %}
+{% include "student_profile/partials/authNav.html" %}
+<div class="row">
+  <div class="col-md-12 m-1 card">
+    <p class="card-description p-4">
+      {{ user.username }}
+      <code>Units::</code>
+    </p>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                Unit Name |  Unit Code
+              </th>
+              <th>
+                Date Uploaded
+              </th>
+              <th>
+                Download
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for user_studentunit in user_studentunit_qs %}
+            {% for user_notes in user_notes_qs %}
+                {% if user_studentunit.unit_id == user_notes.unit_id %}
+                    <tr>
+                        <td class="py-1">
+                            {{ user_notes.unit }}
+                        </td>
+                        <td>
+                            {{ user_notes.timestamp|timesince }}
+                        </td>
+                        <td>
+                            <a href=" /student{{ user_notes.note_file.url }}" class="btn btn-block btn-sm btn-outline-primary">Download</a>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% include "student_profile/partials/authFooter.html" %} 
+{% endblock %}

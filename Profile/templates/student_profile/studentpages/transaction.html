@@ -1,0 +1,74 @@
+{% extends 'student_profile/base.html' %} 
+{% load static %}
+ {% load crispy_forms_tags %}
+{% block content %} {% include "student_profile/partials/authNav.html" %} 
+<div class="row">
+  <div class="col-md-12 m-1 card">
+    <h4 class="card-title p-2">Previous Payments:</h4>
+      <p class="card-description p-2">
+        {{ user.username }} 
+        <code>Here Are The Previous Payments Request:</code>
+      </p>
+      {% for transaction in previous_transaction %}
+        {% for payments in lnmponline %}
+          {% if transaction.merchant_request_id == payments.merchant_request_id %}
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>
+                      Amount
+                    </th>
+                    <th>
+                      Phone Number
+                    </th>
+                    <th>
+                      Receipt Number
+                    </th>
+                    <th>
+                      Transaction Date
+                    </th>
+                    <th>
+                      Message 0
+                    </th>
+                    <th>
+                      Message 1
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="py-1">
+                      {{ payments.saccess_amount }}
+                    </td>
+                    <td>
+                      {% if payments.saccess_phone_number == None %}
+                      
+                      {% else %}
+                        {{ payments.saccess_phone_number }}
+                      {% endif %}
+                    </td>
+                    <td>
+                        {{ payments.saccess_mpesa_receipt_number }}
+                    </td>
+                    <td>
+                        {{ payments.saccess_transaction_date }}
+                    </td>
+                    <td>
+                        {{ payments.success_result_description }}
+                    </td>
+                    <td>
+                        {{ payments.fail_result_description }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          {% endif %}      
+        {% endfor %}
+      {% endfor %}
+  </div>
+</div>
+{% include "student_profile/partials/authFooter.html" %} {% endblock %}

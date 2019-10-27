@@ -1,0 +1,136 @@
+{% extends "home_accademia/base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- LOADER -->
+<div id="site-loader" class="load-complete" style="display: none;">
+    <div class="loader">
+        <div class="loader-inner ball-clip-rotate">
+            <div></div>
+        </div>
+    </div>
+</div>
+<!-- Loader /- -->
+<!-- Header -->
+<header class="header-main container-fluid no-padding">
+    <!-- Top Header -->
+    <div class="top-header container-fluid no-padding">
+        <div class="container">
+            <div class="topheader-left">
+                <a href="tel:+254797324006" title="254797324006">
+                    <i class="fa fa-mobile" aria-hidden="true"></i>{{landlord_profile_qs.your_phone_number}} </a>
+                <a href="mailto:agooclinton@gmail.com" title=""><i class="fa fa-envelope-o" aria-hidden="true"></i>Email
+                    as: agooclinton@gmail.com</a>
+            </div>
+            <div class="topheader-right">
+                <a href="/user/" title="Login"><i class="fa fa-sign-out" aria-hidden="true"></i>Login</a>
+                <a href="/user/register/" title="Register">Register</a>
+            </div>
+        </div>
+    </div>
+    <!-- Top Header /- -->
+
+    <!-- Menu Block -->
+    <div class="menu-block container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="row">
+                <!-- Navigation -->
+                <nav class="navbar ow-navigation">
+                    <div class="col-md-3">
+                        <div class="navbar-header">
+                            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar"
+                                data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a title="Logo" href="#" class="navbar-brand">{{landlord_profile_qs.hostel_name}}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="navbar-collapse collapse" id="navbar">
+                            <ul class="nav navbar-nav menubar">
+                                <li class="dropdown active">
+                                    <a aria-expanded="false" aria-haspopup="true" href="#homepage" role="button"
+                                        class="dropdown-toggle" title="Home">Home</a>
+                                    <i class="ddl-switch fa fa-angle-down"></i>
+                                </li>
+                                <li><a title="" href="/hostels/list/{{landlord_profile_qs.id}}/#pricing">Plans & Prices</a></li>
+                                <li><a title="" href="/hostels/list/{{landlord_profile_qs.id}}/#service">Services</a></li>
+                                <li><a title="" href="/hostels/list/{{landlord_profile_qs.id}}/">Gallery</a></li>
+                                <li><a title="" href="/hostels/list/{{landlord_profile_qs.id}}/#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Navigation /- -->
+                <div class="menu-search">
+                    <div id="sb-search" class="sb-search">
+                        <form>
+                            <input class="sb-search-input" placeholder="Enter your search term..." type="text" value=""
+                                name="search" id="search">
+                            <button class="sb-search-submit"><i class="fa fa-search"></i></button>
+                            <span class="sb-icon-search"></span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container /- -->
+    </div>
+    <!-- Menu Block /- -->
+</header>
+<!-- Header /- -->
+<!-- PhotoSlider Section -->
+<div class="photoslider-section container-fluid no-padding" id="homepage">
+    <div id="home-slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">                    
+                <img src="/hostels{{landlord_hostel_gallery_qs_first.photo.url}}" alt="photoslider1" width="1920" height="801">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="col-md-6 col-sm-8 col-xs-8 ow-pull-right no-padding">
+                            <h4 data-animation="animated bounceInLeft" class="animated bounceInLeft">Welcome</h4>
+                            <h3 data-animation="animated fadeInDown" class="animated fadeInDown">To
+                                {{landlord_hostel_gallery_qs_first.hostel_name}}<span>Gallery</span></h3>
+                            <p data-animation="animated bounceInRight" class="animated bounceInRight">
+                                    {{landlord_hostel_gallery_qs_first.photo_description}}
+                            </p>
+                            <a href="/user/payments/" title="Learn More" data-animation="animated zoomInUp"
+                                class="animated zoomInUp">Book</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for landlord_hostel_gallery in landlord_hostel_gallery_qs %}
+            <div class="item">                    
+                <img src="/hostels{{landlord_hostel_gallery.photo.url}}" alt="photoslider1" width="1920" height="801">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="col-md-6 col-sm-8 col-xs-8 ow-pull-right no-padding">
+                            <h4 data-animation="animated bounceInLeft" class="animated bounceInLeft">Welcome</h4>
+                            <h3 data-animation="animated fadeInDown" class="animated fadeInDown">To
+                                <span>{{landlord_hostel_gallery.hostel_name}}</span></h3>
+                            <p data-animation="animated bounceInRight" class="animated bounceInRight">
+                                    {{landlord_hostel_gallery.photo_description}}
+                            </p>
+                            <a href="/user/payments/" title="Learn More" data-animation="animated zoomInUp"
+                                class="animated zoomInUp">Book</a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            {% endfor %}    
+        </div>
+        <a class="left carousel-control" href="gallery#home-slider" role="button" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right carousel-control" href="gallery#home-slider" role="button" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div>
+<!-- PhotoSlider Section /- -->
+{% endblock  %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col s3 l4"></div>
+    <div class="col s6 l4">
+        <div id="login-page" class="row">
+            <div class="col s12 z-depth-4 card-panel">
+            <form class="login-form"  action='.' method="POST">
+            {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <i class="material-icons large light-blue-text">lock_open</i>
+                        <p class="center login-form-text">Hostel Manager Login</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">person_pin </i>
+                        {{form.username}}
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">fingerprint </i>
+                        {{form.password}}
+                        <label for="password1">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button type="submit" class="btn light-blue">
+                            login
+                        </button>
+                    </div>
+                </div>        
+            </form>
+            </div>
+        </div>
+    </div>
+    <div class="col s3 l4"></div>    
+</div>
+
+{% endblock %}

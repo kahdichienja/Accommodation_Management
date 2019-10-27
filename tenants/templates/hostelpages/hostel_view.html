@@ -1,0 +1,322 @@
+{% extends "home_accademia/base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- LOADER -->
+<div id="site-loader" class="load-complete" style="display: none;">
+    <div class="loader">
+        <div class="loader-inner ball-clip-rotate">
+            <div></div>
+        </div>
+    </div>
+</div>
+<!-- Loader /- -->
+<!-- Header -->
+<header class="header-main container-fluid no-padding">
+    <!-- Top Header -->
+    <div class="top-header container-fluid no-padding">
+        <div class="container">
+            <div class="topheader-left">
+                <a href="tel:+254797324006" title="254797324006">
+                    <i class="fa fa-mobile" aria-hidden="true"></i>{{landlord_profile_qs.your_phone_number}} </a>
+                <a href="mailto:agooclinton@gmail.com" title=""><i class="fa fa-envelope-o" aria-hidden="true"></i>Email
+                    as: agooclinton@gmail.com</a>
+            </div>
+            <div class="topheader-right">
+                <a href="/user/" title="Login"><i class="fa fa-sign-out" aria-hidden="true"></i>Login</a>
+                <a href="/user/register/" title="Register">Register</a>
+            </div>
+        </div>
+    </div>
+    <!-- Top Header /- -->
+
+    <!-- Menu Block -->
+    <div class="menu-block container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="row">
+                <!-- Navigation -->
+                <nav class="navbar ow-navigation">
+                    <div class="col-md-3">
+                        <div class="navbar-header">
+                            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar"
+                                data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a title="Logo" href="#" class="navbar-brand">{{landlord_profile_qs.hostel_name}}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="navbar-collapse collapse" id="navbar">
+                            <ul class="nav navbar-nav menubar">
+                                <li class="dropdown active">
+                                    <a aria-expanded="false" aria-haspopup="true" href="#homepage" role="button"
+                                        class="dropdown-toggle" title="Home">Home</a>
+                                    <i class="ddl-switch fa fa-angle-down"></i>
+                                </li>
+                                <li><a title="" href="#pricing">Plans & Prices</a></li>
+                                <li><a title="" href="#service">Services</a></li>
+                                <li><a title="" href="/hostels/gallery/{{landlord_profile_qs.id}}/">Gallery</a></li>
+                                <li><a title="" href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Navigation /- -->
+                <div class="menu-search">
+                    <div id="sb-search" class="sb-search">
+                        <form>
+                            <input class="sb-search-input" placeholder="Enter your search term..." type="text" value=""
+                                name="search" id="search">
+                            <button class="sb-search-submit"><i class="fa fa-search"></i></button>
+                            <span class="sb-icon-search"></span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container /- -->
+    </div>
+    <!-- Menu Block /- -->
+</header>
+<!-- Header /- -->
+<!-- PhotoSlider Section -->
+<div class="photoslider-section container-fluid no-padding" id="homepage">
+    <div id="home-slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">                    
+                <img src="/hostels{{landlord_hostel_homepage_qs_first.background_image.url}}" alt="photoslider1" width="1920" height="801">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="col-md-6 col-sm-8 col-xs-8 ow-pull-right no-padding">
+                            <h4 data-animation="animated bounceInLeft" class="animated bounceInLeft">Welcome</h4>
+                            <h3 data-animation="animated fadeInDown" class="animated fadeInDown">To
+                                <span>{{landlord_hostel_homepage_qs_first.hostel_name}}</span></h3>
+                            <p data-animation="animated bounceInRight" class="animated bounceInRight">
+                                    {{landlord_hostel_homepage_qs_first.welcoming_message}}
+                            </p>
+                            <a href="/user/payments/" title="Learn More" data-animation="animated zoomInUp"
+                                class="animated zoomInUp">Book</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for landlord_hostel_homepage in landlord_hostel_homepage_qs %}
+            <div class="item">                    
+                <img src="/hostels{{landlord_hostel_homepage.background_image.url}}" alt="photoslider1" width="1920" height="801">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="col-md-6 col-sm-8 col-xs-8 ow-pull-right no-padding">
+                            <h4 data-animation="animated bounceInLeft" class="animated bounceInLeft">Welcome</h4>
+                            <h3 data-animation="animated fadeInDown" class="animated fadeInDown">To
+                                <span>{{landlord_hostel_homepage.hostel_name}}</span></h3>
+                            <p data-animation="animated bounceInRight" class="animated bounceInRight">
+                                    {{landlord_hostel_homepage.welcoming_message}}
+                            </p>
+                            <a href="/user/payments/" title="Learn More" data-animation="animated zoomInUp"
+                                class="animated zoomInUp">Book</a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            {% endfor %}    
+        </div>
+        <a class="left carousel-control" href="accademia#home-slider" role="button" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right carousel-control" href="accademia#home-slider" role="button" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div>
+<!-- PhotoSlider Section /- -->
+<!-- Welcome Section -->
+<div class="container welcome-section" id="pricing">
+    <div class="section-padding"></div>
+    <div class="section-header">
+        <h3>Hostel Plans And<span> Picing</span>:</h3>
+        <p>Here are Our Picing Details for each Service</p>
+    </div>
+    
+    {% for hostel_plan in hostel_plan_qs %} 
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="welcome-box animated fadeInRight">
+                <img src="{% static 'img/apartment-bed-bedding-1034584.jpg' %}" alt="welcome1" style="width:370px; height:440;">
+                <div class="welcome-title">
+                    <h3>Single Room Description</h3>
+                </div>
+                <div class="welcome-content">
+                    <span>Price: {{hostel_plan.single_room_payment_price}}</span>
+                    <span>M-Pesa Pay Bill Number: {{hostel_plan.mpesa_shotcode}}</span>
+                    <p>{{hostel_plan.single_room_desc}}</p>
+                    <a class="btn btn-outline-primary" href="/user/payments/">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="welcome-box animated fadeInRight">
+                <img src="{% static 'img/apartment-bed-bedroom-462235.jpg' %}" alt="welcome2" width="370" height="440">
+                <div class="welcome-title">
+                    <h3>Double Room Description</h3>
+                </div>
+                <div class="welcome-content">
+                    <span>Price: {{hostel_plan.double_room_payment_price}}</span>
+                    <span>M-Pesa Pay Bill Number: {{hostel_plan.mpesa_shotcode}}</span>
+                    <p>{{hostel_plan.double_room_desc}}</p>
+                    <a class="btn btn-outline-primary" href="/user/payments/">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="welcome-box animated fadeInRight">
+                <img src="{% static 'img/bed-bedroom-bright-916337.jpg' %}" alt="welcome3" width="370" height="440">
+                <div class="welcome-title">
+                    <h3>Self Contained</h3>
+                </div>
+                <div class="welcome-content">
+                    <span>Price: {{hostel_plan.self_contained_payment_price}}</span>
+                    <span>M-Pesa Pay Bill Number: {{hostel_plan.mpesa_shotcode}}</span>
+                    <p>{{hostel_plan.self_contained}}</p>
+                    <a class="btn btn-outline-primary" href="/user/payments/">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="section-padding"></div>
+</div>
+<!-- Welcome Section /- -->
+<!-- service section -->
+<div class="container welcome-section" id="service">
+    <div class="section-padding"></div>
+    <div class="section-header">
+        <h3>Hostel <span> Services</span>:</h3>
+        <p>Here are Our Amazing Services</p>
+    </div>
+    
+    {% for hostel_service in hostel_services_qs %}
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="welcome-box animated fadeInRight">
+                <img src="{% static 'img/login.svg' %}" alt="welcome1" style="width:370px; height:440;">
+                <div class="welcome-title">
+                    <h3>Privacy And Security</h3>
+                </div>
+                <div class="welcome-content">
+                    <span>Description:</span>
+                    <p>{{ hostel_service.security }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="welcome-box animated fadeInRight">
+                <img src="{% static 'img/study.svg' %}" alt="welcome2" width="370" height="440">
+                <div class="welcome-title">
+                    <h3>Water Source</h3>
+                </div>
+                <div class="welcome-content">
+                    <span>Description:</span>
+                    <p>{{ hostel_service.water_supply }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="welcome-box animated fadeInRight">
+                <img src="{% static 'img/undraw_business_plan_5i9d.svg' %}" alt="welcome3" width="370" height="440">
+                <div class="welcome-title">
+                    <h3>Power Source</h3>
+                </div>
+                <div class="welcome-content">
+                    <span>Description:</span>
+                    <p>{{ hostel_service.power_supply }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="welcome-box animated fadeInRight">
+                <img src="{% static 'img/bed-bedroom-blanket-2015562.jpg' %}" alt="welcome3" width="370" height="440">
+                <div class="welcome-title">
+                    <h3>Type Of Beds Offered</h3>
+                </div>
+                <div class="welcome-content">
+                    <span>Description:</span>
+                    <p>{{ hostel_service.bed_size }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="welcome-box animated fadeInRight">
+                <img src="{% static 'img/apartment-bed-bedroom-271624.jpg' %}" alt="welcome3" width="370" height="440">
+                <div class="welcome-title">
+                    <h3>Room Size</h3>
+                </div>
+                <div class="welcome-content">
+                    <span>Description:</span>
+                    <p>{{ hostel_service.room_size }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="welcome-box animated fadeInRight">
+                <img src="{% static 'img/photoslider2.jpg' %}" alt="welcome3" width="370" height="440">
+                <div class="welcome-title">
+                    <h3>Furniture</h3>
+                </div>
+                <div class="welcome-content">
+                    <span>Description:</span>
+                    <p>{{ hostel_service.table_and_chair_availabitity }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="section-padding"></div>
+</div>
+<!-- end service section -->
+<!-- Parallax Section -->
+<div class="container-fluid no-padding parallax-section animated fadeInLeft" id="contact">
+    <div class="parallax-carousel owl-carousel owl-theme owl-loaded owl-text-select-on">
+        <div class="owl-stage-outer">
+            <div class="owl-stage"
+                style="transform: translate3d(-2698px, 0px, 0px); transition: all 0s ease 0s; width: 10792px;">
+                <div class="owl-item cloned" style="width: 1349px; margin-right: 0px;">
+                    <!--  -->
+                </div>
+                <div class="owl-item cloned" style="width: 1349px; margin-right: 0px;">
+                    <!--  -->
+                </div>
+                <div class="owl-item cloned" style="width: 1349px; margin-right: 0px;">
+                    <div class="parallax-block">
+                        <div class="parallax-box">
+                            <img src="{% static 'img/parallax-bg.jpg' %}" alt="parallax" width="1920" height="600">
+                        </div>
+                        <div class="parallax-content">
+                            <h3>Contact Us <span>Through</span></h3>
+                            
+                            {% for hostel_contact in hostel_contact_qs %}
+                            <p>Phone: {{hostel_contact.hostel_phone_number}}</p>
+                            <p>Mail: {{hostel_contact.hostel_mail}}</p>
+                            <p>Payment Method: {{hostel_contact.payment_method}}</p>
+                            <p>Address: <br>{{hostel_contact.hostel_address}}</p>
+                                
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="owl-controls">
+            <div class="owl-nav">
+                <div class="owl-prev" style="display: none;">prev</div>
+            </div>
+            <div class="owl-dots">
+                <div class="owl-dot active"><span></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <title>Hostel | {{user.username}}</title>
+      <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'student/vendors/iconfonts/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'student/vendors/css/vendor.bundle.base.css' %}">
+    <link rel="stylesheet" href="{% static 'student/vendors/css/vendor.bundle.addons.css' %}">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link href="{% static 'student/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'student/css/stripe.css' %}" rel="stylesheet">
+    <!-- endinject -->
+    
+    
+</head>
+<body>
+    {% if messages %}
+        {% for  message in messages %}
+            <div class="alert alert-{{message.tags}}">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}
+    
+    {% endblock %}
+
+    <script src="{% static 'student/vendors/js/vendor.bundle.base.js' %}"></script>
+    <script src="{% static 'student/vendors/js/vendor.bundle.addons.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="{% static 'student/js/off-canvas.js' %}"></script>
+    <script src="{% static 'student/js/misc.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{% static 'student/js/dashboard.js' %}"></script>
+    <!-- End custom js for this page-->  
+    {% block scripts %}
+    
+    {% endblock %}  
+</body>
+</html>

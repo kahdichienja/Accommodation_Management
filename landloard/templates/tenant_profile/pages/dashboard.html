@@ -1,0 +1,62 @@
+{% extends "student_profile/base.html" %}
+{% load static %} {% load crispy_forms_tags %}
+{% block scripts %}
+{% endblock %}
+{% block content %}
+{% include "student_profile/partials/authNav.html" %}
+<div class="row">
+  <div class="col-md-2 m-1 card py-2 text-center">
+  <i class="menu-icon mdi mdi-content-copy text-info"></i>
+      Units
+      <p>{{ unit_count }}</p>
+  </div>
+  <div class="col-md-3 m-1 card py-2 text-center">
+    <i class="menu-icon mdi mdi-file-document-box text-success"></i>
+      My Assignments Uploads
+      <p>{{ assignment_count }}</p>
+  </div>
+  <div class="col-md-3 m-1 card py-2 text-center">
+  <i class="mdi mdi-bookmark-plus-outline text-primary"></i>
+      Notes
+      <p></p>
+  </div>
+  <div class="col-md-3 m-1 card py-2 text-center">
+    <i class="menu-icon mdi mdi-file-document-box text-info"></i>
+      Papers
+      <p>0</p>
+  </div>
+</div>
+{% for assignments in assignments_student %} 
+<div class="row mt-2">
+  <div class="col-md-9 offset-md-1 card">
+    <div class="card-body">
+      <p class="card-description p-2">
+        <code class="ml-4">Assignment Upload Receipt:: For {{ assignments.unit }}</code>
+      </p>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card-body text-info">
+            <h4>Name: {{ assignments.student_name }}</h4>
+            <p>Admission Number: {{ assignments.admission_number }}</p>
+          </div>
+        </div>
+        <div class="col-md-6 text-right">
+          <div class="card-body text-info">  
+            <h1>
+              <img class="img-xs rounded-circle" src="/student{{ user.studentprofile.profile_picture.url }}" alt="Profile image">
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card-body text-center text-info">
+          <p>
+            This is to satify that CSC/022/2017 <br> Submitted {{ assignments.unit }} On <br> {{ assignments.timestamp }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% include "student_profile/partials/authFooter.html" %} {% endblock %}

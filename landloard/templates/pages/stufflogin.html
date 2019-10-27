@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col s3 l4"></div>
+    <div class="col s6 l4">
+        <div id="login-page" class="row">
+            <div class="col s12 z-depth-4 card-panel">
+            <form class="login-form"  action='.' method="POST">
+            {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <i class="material-icons large light-blue-text">lock</i>
+                        <p class="center login-form-text">
+                            Only Staff Are Required To View The Page Your Requested. Contact Admin To Make You Staff:
+                        </p>
+                        <h4><i class="material-icons">phone</i> 0797324006</h4>
+                         <h5>
+                            <a href="mailto:computerscience2.10@gmail.com">
+                                <span><i class="material-icons">mail</i> Mail</span>
+                            </a>  
+                         </h5>
+                    </div>
+                </div>        
+            </form>
+            </div>
+        </div>
+    </div>
+    <div class="col s3 l4"></div>    
+</div>
+
+{% endblock %}

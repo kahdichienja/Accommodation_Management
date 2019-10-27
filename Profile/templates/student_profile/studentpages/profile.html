@@ -1,0 +1,64 @@
+{% extends 'student_profile/base.html' %} 
+{% load static %} 
+{% load crispy_forms_tags %}
+{% block content %} 
+{% include "student_profile/partials/authNav.html" %} 
+<div class="row">
+  <div class="col-md-7 m-1 card">
+    <h4 class="card-title p-2">Previous Payments:</h4>
+      <p class="card-description p-2">
+        {{ user.username }} 
+        <code>Profile</code>
+      </p>
+      <div class="row">
+          <div class="col-md-2">
+              <div class="card text-center">
+                 <p>
+                    <img src="/user{{ user.tenantprofile.user_picture.url }}" style="height: 50%; width: 50%; border-radius: 50%;" alt="">
+                 </p> 
+              </div>
+          </div>
+          <div class="col-md-10">
+              <div class="card">
+                  <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th data-field="id">Full Name</th>
+                              <th data-field="name">Username</th>
+                              <th data-field="price">Email</th>
+                              <th data-field="price">Phone Number</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>{{ user.tenantprofile.your_full_name }}</td>
+                              <td>{{user.username}}</td>
+                              <td>{{user.email}}</td>
+                              <td>{{user.tenantprofile.phone_number}}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-4 m-1 card">
+    {% if messages %}
+        {% for  message in messages %}
+            <div class="alert alert-{{message.tags}}">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <h4 class="card-title p-2">{{ user.username }}: Make Your Profile:</h4>
+        <div class="card-body">
+            <form action="." method="POST" enctype="multipart/form-data">
+            
+                {% csrf_token %}
+                {{form|crispy}}
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% include "student_profile/partials/authFooter.html" %} {% endblock %}

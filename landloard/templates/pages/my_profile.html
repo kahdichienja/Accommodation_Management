@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- content -->
+<div class="row">
+    <div class="col l3 hide-on-med-and-down">
+    {% if request.user.is_authenticated %}
+        {% include "partial/full_sidenav.html" %}
+    {% else %}
+        
+    {% endif %}    
+    </div>
+    <div class="col s11 l5 m12">
+        <ul class="collapsible">
+            <li class="active">
+                <div class="collapsible-header">
+                    My Profile {{ user.landlordprofile.your_full_name }}
+                    <span class="badge"><i class="material-icons">arrow_drop_down</i></span>
+                </div>
+                <div class="collapsible-body">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator responsive-img" src="/management{{ user.landlordprofile.your_picture.url }}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">
+                                <i class="material-icons light-blue-text">location_city</i> Hostel Name: {{ user.landlordprofile.hostel_name }}<i class="material-icons light-blue-text right">more_vert</i>
+                            </span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Hostel Name: {{ user.landlordprofile.hostel_name }}<i class="material-icons light-blue-text right">close</i></span>
+                            <p>My Hostel Is Located At: {{ user.landlordprofile.hostel_location }}</p>
+                            <p>Contacts: {{ user.landlordprofile.your_phone_number }}</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col s3 l4 hide-on-med-and-down">
+        <ul class="collapsible">
+            <li class="active">
+                <div class="collapsible-header">
+                    Add Profile.
+                    <span class="badge"><i class="material-icons">mode_edit</i></span>
+                </div>
+                <div class="collapsible-body">
+                    <div class="">
+                        <div class="card-content">
+                            <div class="row">
+                                <form class="col s12" action="." method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <input type="text" hidden value="{{ user.id }}" name="user">    
+                                    </div>
+                                    <div class="row">
+                                    
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix light-blue-text">location_city</i>
+                                            {{form.hostel_name}}
+                                            <label for="icon_prefi">Hostel Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix light-blue-text">place</i>
+                                            {{form.hostel_location}}
+                                            <label for="icon_prefix">Hostel Location</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix light-blue-text">person</i>
+                                            {{form.your_full_name}}
+                                            <label for="icon_prefix">Your Full Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix light-blue-text">phone</i>
+                                            {{form.your_phone_number}}
+                                            <label for="id_your_phone_number">Phone Number eg 254797324006.</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="file" name="your_picture" accept="image/*" required id="id_your_picture">
+                                            <label for="id_your_picture">Profile Picture</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <button class="btn waves-effect waves-light" type="submit">
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end content -->
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- content -->
+<div class="row">
+    <div class="col l3 hide-on-med-and-down">
+    {% if request.user.is_authenticated %}
+        {% include "partial/full_sidenav.html" %}
+    {% else %}
+        
+    {% endif %}    
+    </div>
+    <div class="col s12 l6 m12">
+        <div class="card row grey lighten-4">
+            <div class="col s12">
+                <div class="" style="padding: 1.2rem;">
+                    <div class="card-content center">
+                        <div class="col s3" style="margin-bottom: 1rem">
+                            <i class="material-icons light-green-text medium">receipt</i>
+                            <p>Receipt</p>
+                            <p>21</p>
+                        </div>
+                        <div class="col s3" style="margin-bottom: 1rem">
+                            <i class="material-icons medium lime-text">payment</i>
+                            <p>Payments</p>
+                            <p>21</p>
+                        </div>
+                        <div class="col s3" style="margin-bottom: 1rem">
+                            <i class="material-icons medium light-blue-text">location_city</i>
+                            <p>Total Rooms</p>
+                            <p>21</p>
+                        </div>
+                        <div class="col s3" style="margin-bottom: 1rem">
+                            <i class="material-icons medium  blue-grey-text">people</i>
+                            <p>Total Tenants</p>
+                            <p>28</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header">
+                    Payment Components Component
+                    <span class="badge"><i class="material-icons">arrow_drop_down</i></span>
+                </div>
+                <div class="collapsible-body">
+                    <div class="card-content">
+                        
+                        {% for plan in hostel_plan %} 
+                        <h5>{{plan.hostel_name}}: Plans</h5>
+                            <blockquote>
+                                <div class="card center" style="padding: 1rem;">
+                                    <h6>Single Room Description</h6>
+                                    <h5>Price : {{plan.single_room_payment_price}}</h5>
+                                    <h5>Pay Bill : {{plan.mpesa_shotcode}}</h5>
+                                    <p>{{plan.single_room_desc}}</p>
+                                </div>
+                            </blockquote>  
+                            <blockquote>
+                                <div class="card center" style="padding: 1rem;">
+                                    <h6>Double Room Description</h6>
+                                    <h5>Price : {{plan.double_room_payment_price}}</h5>
+                                    <h5>Pay Bill : {{plan.mpesa_shotcode}}</h5>
+                                    <p>{{plan.double_room_desc}}</p>
+                                </div>
+                            </blockquote>  
+                            <blockquote>
+                                <div class="card center" style="padding: 1rem;">
+                                    <h6>Self Contained</h6>
+                                    <h5>Price : {{plan.self_contained_payment_price}}</h5>
+                                    <h5>Pay Bill : {{plan.mpesa_shotcode}}</h5>
+                                    <p>{{plan.self_contained}}</p>
+                                </div>
+                            </blockquote> 
+                        {% endfor %}
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col s3 hide-on-med-and-down">
+
+    </div>
+</div>
+<!-- end content -->
+{% endblock %}
