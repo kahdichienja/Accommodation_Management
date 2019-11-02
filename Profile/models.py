@@ -30,10 +30,11 @@ class TenantProfile(models.Model):
 
 class RoomateSelection(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
-    user_roomate = models.OneToOneField(TenantProfile, on_delete = models.CASCADE)
+    user_roomate = models.CharField(max_length=191)
+    is_accepted = models.CharField(max_length=2, null=True, blank=True)
 
 class HostelPaymentplan(models.Model):
-    """Model definition for HostelPaymentplan."""
+    """Model definition for HostelPaymentplan. """
 
     # TODO: Define fields here
     tenant = models.ForeignKey(User, on_delete = models.CASCADE)

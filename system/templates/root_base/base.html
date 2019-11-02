@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042) -->
+
+<html lang="en" class="gr__colorlib_com">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>UAS | HOME</title>
+    {% load static %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/css' %}" rel="stylesheet">
+    <link rel="stylesheet"
+        href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/animate.css' %}">
+    <link rel="stylesheet"
+        href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/owl.carousel.min.css' %}">
+    <link rel="stylesheet"
+        href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/owl.theme.default.min.css' %}">
+    <link rel="stylesheet"
+        href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/aos.css' %}">
+    <link rel="stylesheet"
+        href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/ionicons.min.css' %}">
+    <link rel="stylesheet"
+        href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet"
+        href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/style.css' %}">
+    <style type="text/css' %}">
+        .scrollax-performance,
+        .scrollax-performance *,
+        .scrollax-performance *:before,
+        .scrollax-performance *:after {
+            pointer-events: none !important;
+            -webkit-animation-play-state: paused !important;
+            animation-play-state: paused !important;
+        }
+
+        ;
+    </style>
+    <script type="text/javascript" charset="UTF-8"
+        src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/common.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/util.js"></script></head>
+<body data-gr-c-s-loaded="true" data-aos-easing="slide" data-aos-duration="800" data-aos-delay="0">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="/">UAS</a><small>University Accommodation Service</small>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/hostels/list/" class="nav-link">Hostels List</a></li>
+                <li class="nav-item"><a href="/management/login/" class="nav-link">University</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    {% if messages %}
+        {% for  message in messages %}
+            <div class=" alert alert-{{message.tags}}">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}
+
+    {% endblock %}
+    <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">UAS</h2>
+                        <p>Far far away, behind the word mountains, far from the countries.</p>
+                        <ul class="ftco-footer-social list-unstyled mt-5">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">Community</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Search Properties</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>For Agents</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Reviews</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">About Us</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Our Story</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Meet the team</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Company</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About Us</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Press</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
+                            <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">297 Ahero St. Stephen , Kokuoyo, Kisumu, Kenya</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+254 79 732 4006</span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope pr-4"></span><span class="text">computerscience2.10@gmail.com</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                    Copyright ©
+                    <script type="text/javascript">document.write(new Date().getFullYear());</script> All rights reserved | This
+                    template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://developer.al-masi.com/"
+                    target="_blank">Agoo Clinton</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="ftco-loader" class="fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/jquery.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/jquery-migrate-3.0.1.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/popper.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/bootstrap.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/jquery.easing.1.3.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/jquery.waypoints.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/jquery.stellar.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/owl.carousel.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/jquery.magnific-popup.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/aos.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/jquery.animateNumber.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/bootstrap-datepicker.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/jquery.timepicker.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/scrollax.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/google-map.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/main.js' %}"
+        type="text/javascript"></script>
+
+    <script async="" src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/js(1)' %}"
+        type="text/javascript"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+
+    </body>
+
+</html>

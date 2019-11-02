@@ -11,6 +11,7 @@ urlpatterns = [
     path('profile/', user_views.profile, name = 'profile'),
     # path('stripe_payments/', user_views.stripe_payments, name='stripe_payments'),
     path('payments/', user_views.payments, name = 'payments'),
+    path('roomate/', user_views.user_roomate_selection, name='user_roomate_selection'),
     path('alltransaction/', user_views.all_user_transaction, name='all_user_transaction'),
 ]
 if settings.DEBUG:

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'landloard',
     'mpesa',
     'tenants',
+    'system',
 ]
 
 MIDDLEWARE = [

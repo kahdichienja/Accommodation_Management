@@ -1,6 +1,6 @@
-{% extends 'student_profile/base.html' %} 
+{% extends 'student_profile/base.html' %}
 {% load static %}
- {% load crispy_forms_tags %}
+{% load crispy_forms_tags %}
 {% block scripts %}
 
 
@@ -11,11 +11,11 @@
 <div class="row">
   <div class="col-md-6 m-1 card">
     {% if messages %}
-      {% for  message in messages %}
-        <div class="alert alert-{{message.tags}}">
-            {{message}}
-        </div>
-      {% endfor %}
+    {% for  message in messages %}
+    <div class="alert alert-{{message.tags}}">
+      {{message}}
+    </div>
+    {% endfor %}
     {% endif %}
     {% if hostel_plan_check_qs.count == 0 %}
     <p class="p-4">Select Hostel</p>
@@ -30,160 +30,183 @@
       </div>
     </form>
     {% else %}
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Hostel Name</th>
-            <th>Your UserName</th>
-            <th class="text-danger">Amount To Pay</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for hostel_plan_check in hostel_plan_check_qs %}
-          <tr>
-            <td>{{ hostel_plan_check.plan }}</td>
-            <td>{{ hostel_plan_check.tenant }}</td>
-            <td class="text-danger">
-              
-              {% for hosteluserplan in hostel_payment_plan_check_qs %}
-                {{hosteluserplan.amountpaid}}
-              {% endfor %}
-                
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      
-      
-        {% if hostel_plan_check_qs.count >= 1 %}
-          <form action="." 
-                method="POST" 
-                class="p-5" 
-                {% if hostel_payment_plan_check_qs.count >= 1 %} 
-                style="display: none;" 
-                {% endif %}
-                >
-            {% csrf_token %}
-            {% for hostelshortcode in hostelplan %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Hostel Name</th>
+          <th>Your UserName</th>
+          <th class="text-danger">Amount To Pay</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for hostel_plan_check in hostel_plan_check_qs %}
+        <tr>
+          <td>{{ hostel_plan_check.plan }}</td>
+          <td>{{ hostel_plan_check.tenant }}</td>
+          <td class="text-danger">
 
-            {% for hostel_plan_check in hostel_plan_check_qs %} 
-
-              {% if hostel_plan_check.plan_id == hostelshortcode.id %}
-                <input type="text" hidden="true" name="paymentplan_id"  value="{{hostelshortcode.id}}" id="id_paymentplan" required>
-                <input type="text" hidden="true" name="tenant_id"  value="{{user.id}}" id="id_tenant" required>
-                <div class="form-group">
-                  <label for="hostel-Plan">Select Hostel Plan You Will Pay</label>
-                  <table class="table table-bordered table-responsive">
-                    <thead>
-                      <tr>
-                        <th>Single Room Price</th>
-                        <th>Double Room Price</th>
-                        <th>Self Contained Price</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" 
-                                  name="amountpaid" value="{{hostelshortcode.single_room_payment_price}}" 
-                                  class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline1">{{hostelshortcode.single_room_payment_price}}</label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2"
-                                  name="amountpaid" value="{{hostelshortcode.double_room_payment_price}}" 
-                                  class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline2">{{hostelshortcode.double_room_payment_price}}</label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline3" 
-                                  name="amountpaid" value="{{hostelshortcode.self_contained_payment_price}}"
-                                  class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline3">{{hostelshortcode.self_contained_payment_price}}</label>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              {% endif %}
+            {% for hosteluserplan in hostel_payment_plan_check_qs %}
+            {{hosteluserplan.amountpaid}}
             {% endfor %}
-          {% endfor %}
-            <button type="submit" class="btn btn-info mt-3 submit-btn">
-              Submit Plan
-            </button>
-          </form>
-        {% endif %} 
+
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+    {% if hostel_plan_check_qs.count >= 1 %}
+    <form action="." method="POST" class="p-5" {% if hostel_payment_plan_check_qs.count >= 1 %} style="display: none;"
+      {% endif %}>
+      {% csrf_token %}
+      {% for hostelshortcode in hostelplan %}
+
+      {% for hostel_plan_check in hostel_plan_check_qs %}
+
+      {% if hostel_plan_check.plan_id == hostelshortcode.id %}
+      <input type="text" hidden="true" name="paymentplan_id" value="{{hostelshortcode.id}}" id="id_paymentplan"
+        required>
+      <input type="text" hidden="true" name="tenant_id" value="{{user.id}}" id="id_tenant" required>
+      <div class="form-group">
+        <label for="hostel-Plan">Select Hostel Plan You Will Pay</label>
+        <table class="table table-bordered table-responsive">
+          <thead>
+            <tr>
+              <th>Single Room Price</th>
+              <th>Double Room Price</th>
+              <th>Self Contained Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline1" name="amountpaid"
+                    value="{{hostelshortcode.single_room_payment_price}}" class="custom-control-input">
+                  <label class="custom-control-label"
+                    for="customRadioInline1">{{hostelshortcode.single_room_payment_price}}</label>
+                </div>
+              </td>
+              <td>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline2" name="amountpaid"
+                    value="{{hostelshortcode.double_room_payment_price}}" class="custom-control-input">
+                  <label class="custom-control-label"
+                    for="customRadioInline2">{{hostelshortcode.double_room_payment_price}}</label>
+                </div>
+              </td>
+              <td>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline3" name="amountpaid"
+                    value="{{hostelshortcode.self_contained_payment_price}}" class="custom-control-input">
+                  <label class="custom-control-label"
+                    for="customRadioInline3">{{hostelshortcode.self_contained_payment_price}}</label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+      <button type="submit" class="btn btn-info mt-3 submit-btn">
+        Submit Plan
+      </button>
+    </form>
+    {% endif %}
 
     {% endif %}
   </div>
-  
-  <div class="col-md-5 m-1 card p-3"> 
+
+  <div class="col-md-5 m-1 card p-3">
     {% if hostel_plan_check_qs.count >= 1 %}
-      <h3>Make M-Pesa Payments</h3>
-      <p class="text-danger">Phone Number Must Be Written In This Format.(254723465789)</p>
-      <form action="" method="POST" enctype="multipart/form-data"
-      {% if hostel_payment_plan_check_qs.count == 0 %} style="display: none;" {% endif %}
-      >
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="phone_number">Phone Number eg 254712******</label>
-          {{ form.phone_number }}
-        </div>
-        {{ form.test }}
-        <input type="text" name="user_id" hidden="true" value="{{ user.id }}" id="id_number" required>
-        
-        {% for hostelshortcode in hostelplan %}
+    <h3>Make M-Pesa Payments</h3>
+    <p class="text-danger">Phone Number Must Be Written In This Format.(254723465789)</p>
+    <form action="" method="POST" enctype="multipart/form-data" {% if hostel_payment_plan_check_qs.count == 0 %}
+      style="display: none;" {% endif %}>
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="phone_number">Phone Number eg 254712******</label>
+        {{ form.phone_number }}
+      </div>
+      {{ form.test }}
+      <input type="text" name="user_id" hidden="true" value="{{ user.id }}" id="id_number" required>
 
-          {% for hostel_plan_check in hostel_plan_check_qs %} 
+      {% for hostelshortcode in hostelplan %}
 
-            {% if hostel_plan_check.plan_id == hostelshortcode.id %}
-        <div class="form-group">
-          <label for="Pay Bill">Pay Bill</label>
-          <select name="business_short_code" class="form-control" required id="id_business_short_code">
-            <option>---Select Hostel Pay Bill Or Till Number---</option>
-              <option value="{{hostelshortcode.mpesa_shotcode}}">
-                {{hostelshortcode.hostel_name}}: Pay Bill Or Till Number: 
-                {{hostelshortcode.mpesa_shotcode}}
-              </option>
-          </select>
-        </div>
-        <input type="text" name="hostel_name_id" hidden="true"  value="{{hostelshortcode.id}}" id="id_hostel_name" required>
-        
-        
-            {% for hosteluserplan in hostel_payment_plan_check_qs %}
-               You Are About To Pay <span class="text-danger">{{hosteluserplan.amountpaid}}/= </span>For {{hosteluserplan.paymentplan}} As Rent
-              {% endfor %}
-            {% endif %}
-          {% endfor %}
-        {% endfor %} 
+        {% for hostel_plan_check in hostel_plan_check_qs %}
 
-        <input type="text" 
-               name="amount" 
-               hidden="true"
-               class="form-control"  
-               value="{% for hosteluserplan in hostel_payment_plan_check_qs %} {{hosteluserplan.amountpaid}} {% endfor %}" 
-               id="id_amount" 
-               required>
-  
-        <div class="form-group">
-          <button type="submit" class="btn btn-info mt-3 submit-btn">
-            Pay
-          </button>
-        </div>
-      </form>
-  {% else %}
-  <h3>Make M-Pesa Payments</h3>
-      <p class="text-danger">Select Hostel First In Order To Make Payments</p>
-  {% endif %}
-</div>
-    
+          {% if hostel_plan_check.plan_id == hostelshortcode.id %}
+            <div class="form-group">
+              <label for="Pay Bill">Pay Bill</label>
+              <select name="business_short_code" class="form-control" required id="id_business_short_code">
+                <option>---Select Hostel Pay Bill Or Till Number---</option>
+                <option value="{{hostelshortcode.mpesa_shotcode}}">
+                  {{hostelshortcode.hostel_name}}: Pay Bill Or Till Number:
+                  {{hostelshortcode.mpesa_shotcode}}
+                </option>
+              </select>
+            </div>
+            <input type="text" name="hostel_name_id" hidden="true" value="{{hostelshortcode.id}}" id="id_hostel_name"
+              required>
+            <div class="form-group">
+              <label for="hostel-Plan">Select Hostel Plan You Will Pay</label>
+              <table class="table table-bordered table-responsive">
+                <thead>
+                  <tr>
+                    <th>Single Room Price</th>
+                    <th>Double Room Price</th>
+                    <th>Self Contained Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadio1" name="amount"
+                          value="{{hostelshortcode.single_room_payment_price}}" class="custom-control-input">
+                        <label class="custom-control-label"
+                          for="customRadio1">{{hostelshortcode.single_room_payment_price}}</label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadio2" name="amount"
+                          value="{{hostelshortcode.double_room_payment_price}}" class="custom-control-input">
+                        <label class="custom-control-label"
+                          for="customRadio2">{{hostelshortcode.double_room_payment_price}}</label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadio3" name="amount"
+                          value="{{hostelshortcode.self_contained_payment_price}}" class="custom-control-input">
+                        <label class="custom-control-label"
+                          for="customRadio3">{{hostelshortcode.self_contained_payment_price}}</label>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-info mt-3 submit-btn">
+          Pay
+        </button>
+      </div>
+    </form>
+    {% else %}
+    <h3>Make M-Pesa Payments</h3>
+    <p class="text-danger">Select Hostel First In Order To Make Payments</p>
+    {% endif %}
+  </div>
+
 </div>
 <div class="row">
   <div class="col-md-11 m-1 card">
@@ -192,7 +215,7 @@
       {{ user.username }}
       <code>Here Are The Previous Success Transaction Request:</code>
     </p>
-    
+
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-striped">

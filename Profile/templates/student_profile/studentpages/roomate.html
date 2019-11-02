@@ -1,0 +1,118 @@
+{% extends 'student_profile/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block scripts %}
+
+
+{% endblock %}
+{% block content %}
+
+{% include "student_profile/partials/authNav.html" %}
+
+<div class="row">
+    <div class="col-md-5 m-1 card">
+        <div class="card-body">
+            <h4 class="text-info mb-2">Roomate Requests</h4>
+            <table class="table table-responsive table-striped">
+                <thead>
+                    <tr>
+                        <th data-field="id">Username</th>
+                        <th data-field="name">Roomate Name</th>
+                        <th>Confirmed</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for roomate in roomate_qs %}
+                        <tr>
+                            <td>{{roomate.user}}</td>
+                            <td>{{roomate.user_roomate}}</td>
+                            <td>{{roomate.is_accepted}}</td>
+                            <td class="text-success">
+                                <button type="submit" class="btn btn-success">Accept</button>
+                            </td>
+                            <td class="text-danger">
+                                <button type="submit" class="btn btn-danger">Reject</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-body">
+            <h3 class="text-info text-center">
+                {{ user.tenantprofile.your_full_name }} | 
+                Your Roomate Is Blabla
+            </h3>
+        </div>
+        <div class="card-body">     
+            <h4>People With Same Payment Plan As Me</h4>       
+            <table class="table table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th data-field="id">Username</th>
+                        <th data-field="name">Hostel</th>
+                        <th data-field="price">Amount To Pay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user_payment in hostel_payment_plan %}
+                        {% for user_hostel in user_hostel_plan %}
+                        
+                            {% if user_payment.paymentplan == user_hostel.plan %}
+                                
+                                {% if user_payment.amountpaid == hostel_payment_plan_qs.amountpaid %}
+                                    <tr>
+                                        <td>{{ user_payment.tenant }}</td>
+                                        <td>{{ user_payment.paymentplan }}</td>
+                                        <td> {{ user_payment.amountpaid }}</td>
+                                    </tr> 
+                                {% endif %}
+                                    
+                            
+                            {% endif %}
+                            
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table> 
+        </div>
+    </div>
+    <div class="col-md-6 m-1 card">
+        <div class="card-body">
+            <h4 class="text-info">Request For Roomate</h4>
+        </div>
+        <div class="card-body">
+            {% if roomate_qs.count == 1 %}
+            <h1>Wait For Response</h1>
+            {% else %}   
+                <form action="." method="POST">
+                    {% csrf_token %} 
+                    <input type="text" hidden class="form-control" name="user_id" value="{{user.id}}">              
+                    <div class="form-group">
+                        <label for="">Select Roommate</label>
+                    <select name="user_roomate" class="select form-control" required id="id_user"> 
+                            <option value="" selected>----Select Roommate----</option> 
+                            {% for user_payment in hostel_payment_plan %}
+                                {% for user_hostel in user_hostel_plan %}
+                                    {% if user_payment.paymentplan == user_hostel.plan %}
+                                        {% if user_payment.amountpaid == hostel_payment_plan_qs.amountpaid %}
+                                            <option value="{{ user_payment.tenant }}">{{ user_payment.tenant }} : {{ user_payment.paymentplan }}</option>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </select> 
+                    </div>
+                    <input type="text" hidden class="form-control" name="is_accepted" value="0"> 
+                    <button type="submit" class="btn btn-info">Request</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% include "student_profile/partials/authFooter.html" %}
+
+{% endblock %}

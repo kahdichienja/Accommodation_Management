@@ -21,4 +21,5 @@ urlpatterns = [
     path('management/', include('landloard.urls')),
     path('hostels/', include('tenants.urls')),
     path('user/', include('Profile.urls')),
+    path('', include('system.urls')),
 ]

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from . models import LandlordProfile, TenantProfile, UserHostelPlan, HostelPaymentplan
+from . models import LandlordProfile, TenantProfile, UserHostelPlan, HostelPaymentplan, RoomateSelection
 from landloard.models import HostelPlan
 
 
@@ -57,6 +57,16 @@ class UserHostelPlanForm(forms.ModelForm):
             # 'tenant',
             'plan',
         ]
+
+class RoomateSelectionForm(forms.ModelForm):
+    """Form definition for RoomateSelection."""
+    is_accepted = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'form-control', 'value': '0', 'disabled': '', 'id': 'id_number', 'required': 'true'}))
+    class Meta:
+        """Meta definition for RoomateSelectionform."""
+
+        model = RoomateSelection
+        fields = ('user','user_roomate','is_accepted',)
 
 
 class HostelPaymentplanForm(forms.ModelForm):
