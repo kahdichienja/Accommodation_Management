@@ -2,11 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-
-
-<div class="hero-wrap ftco-degree-bg"
-    style="background-image: url({% static 'images/bg_1.jpg' %}); background-position: 50% 74px;"
-    data-stellar-background-ratio="0.5">
+<div class="hero-wrap ftco-degree-bg" style="background-image: url({% static 'images/bg_1.jpg' %}); background-position: 50% 74px;" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text justify-content-center align-items-center">
@@ -96,6 +92,64 @@
 <section class="ftco-section goto-here">
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+                <span class="subheading">Service To Student</span>
+                <h2 class="mb-2">System Service To Student</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="property-wrap ftco-animate">
+                    <video src="{% static 'video/2-maximize-access_ff.mp4' %}" poster="video.jpg" height="250" width="270" autoplay muted loop>
+                    </video>
+                <div class="text">
+                    <h3><a href="#">Quick Accommodation</a></h3>
+                    <p class="price">
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <span class="location">Search</span>
+                    <a href="#" class="d-flex align-items-center justify-content-center btn-custom">
+                    </a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+                <div class="property-wrap ftco-animate">
+                    <video src="{% static 'video/step07_improving_results--ff.mp4' %}" poster="video.jpg" height="250" width="270" autoplay muted loop>
+                    </video>
+                    <div class="text">
+                    <h3><a href="#">Roomate Selection</a></h3>
+                    <p class="price">
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <span class="location">Search</span>
+                    <a href="#" class="d-flex align-items-center justify-content-center btn-custom">
+                    </a>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="property-wrap ftco-animate">
+                    <video src="{% static 'video/4-protect-privacy_ff.mp4' %}" poster="video.jpg" height="250" width="270" autoplay muted loop>
+                    </video>
+                    <div class="text">
+                    <h3><a href="#">User Privacy</a></h3>
+                    <p class="price">
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <span class="location">Search</span>
+                    <a href="#" class="d-flex align-items-center justify-content-center btn-custom">
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section goto-here">
+    <div class="container">
+        <div class="row justify-content-center">
             <div class="col-md-12 heading-section text-center ftco-animate mb-5 fadeInUp ftco-animated">
                 <span class="subheading">Platform Service</span>
                 <h2 class="mb-2">Exclusive Offer For You</h2>
@@ -173,15 +227,12 @@
             </div>
             <div class="col-md-6 wrap-about py-md-5 ftco-animate">
                 <div class="heading-section p-md-5">
-                    <h2 class="mb-4">We Put People First.</h2>
+                    <h2 class="mb-4">We Put Landlord And Universities First.</h2>
                     <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It
                         is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
                     <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it
                         would have been rewritten a thousand times and everything that was left from its origin would be
-                        the word "and" and the Little Blind Text should turn around and return to its own, safe country.
-                        But nothing the copy said could convince her and so it didn’t take long until a few insidious
-                        Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their
-                        agency, where they abused her for their.</p>
+                    </p>
                 </div>
             </div>
         </div>
@@ -193,23 +244,23 @@
             <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 py-4 mb-4">
                     <div class="text text-border d-flex align-items-center">
-                        <strong class="number" data-number="305">305</strong>
-                        <span>Area <br>Population</span>
+                        <strong class="number" data-number="{{accommodation.count}}">{{accommodation.count}}</strong>
+                        <span>Universities <br>Rgegisterded</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 py-4 mb-4">
                     <div class="text text-border d-flex align-items-center">
-                        <strong class="number" data-number="1090">1,090</strong>
-                        <span>Total <br>Properties</span>
+                        <strong class="number" data-number="{{universities.count}}">{{universities.count}}</strong>
+                        <span>Total <br>Accommodation</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 py-4 mb-4">
                     <div class="text text-border d-flex align-items-center">
-                        <strong class="number" data-number="209">209</strong>
+                        <strong class="number" data-number="{{accommodation.count}}">{{accommodation.count}}</strong>
                         <span>Average <br>House</span>
                     </div>
                 </div>
@@ -217,7 +268,7 @@
             <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 py-4 mb-4">
                     <div class="text d-flex align-items-center">
-                        <strong class="number" data-number="67">67</strong>
+                        <strong class="number" data-number="7">7</strong>
                         <span>Total <br>Branches</span>
                     </div>
                 </div>
@@ -237,13 +288,13 @@
             <div class="col-md-3 ftco-animate">
                 <div class="agent">
                     <div class="img">
-                        <img src="{% static './Uptown - Free Bootstrap 4 Template by Colorlib_files/team-1.jpg' %}"
-                            class="img-fluid" alt="Colorlib Template">
+                        <video src="{% static 'video/6-help-succeed_ff.mp4' %}" poster="video.jpg" height="350" width="270" autoplay muted loop>
+                        </video>
                     </div>
                     <div class="desc">
-                        <h3><a href="properties.html">James Stallon</a></h3>
-                        <p class="h-info"><span class="location">Listing</span> <span class="details">— 10
-                                Properties</span></p>
+                        <h3><a href="properties.html">Agoo Clinton</a></h3>
+                        <p class="h-info"><span class="location">Software Engineer</span> <span class="details">— 10X
+                                Programmer</span></p>
                     </div>
                 </div>
             </div>
@@ -267,9 +318,8 @@
                             class="img-fluid" alt="Colorlib Template">
                     </div>
                     <div class="desc">
-                        <h3><a href="properties.html">James Stallon</a></h3>
-                        <p class="h-info"><span class="location">Listing</span> <span class="details">— 10
-                                Properties</span></p>
+                        <h3><a href="properties.html">Sheril Agoo</a></h3>
+                        <p class="h-info"><span class="location">System Manager</span> <span class="details">— And System Designer</span></p>
                     </div>
                 </div>
             </div>
