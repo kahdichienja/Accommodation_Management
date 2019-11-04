@@ -8,6 +8,8 @@ from .models import LandlordProfile, HostelHomePage, HostelService, HostelContac
 from .forms import LandlordProfileForm, HostelHompageForm, HostelPlanForm, HostelServiceForm, HostelContactForm, HostelGallaryForm
 # Create your views here.
 from django.core.exceptions import ObjectDoesNotExist
+from Profile.models import PaymentRequestHeaders, HostelPaymentplan, TenantProfile
+from landloard.models import HostelService
 
 def register(request):
     if request.method == 'POST':
@@ -51,12 +53,24 @@ def login_landlord(request):
 def dashboard_landlord(request):
     if request.user.is_authenticated:
         try:
+            hostelpaymentplan = HostelPaymentplan.objects.filter(paymentplan_id = request.user.landlordprofile.id)
+            hostelpaymentplan_for_payment_display_qs = HostelPaymentplan.objects.all()
+            hostel_payment_filter_qs = TenantProfile.objects.all()
             hostel_plan = HostelPlan.objects.filter(hostel_name_id = request.user.landlordprofile.id)
+            hostel_payments = PaymentRequestHeaders.objects.filter(hostel_name_id = request.user.landlordprofile.id)
+            landlordprofile = LandlordProfile.objects.filter(user_id = request.user.id)
+            total_no_of_rooms = HostelService.objects.filter(hostel_name_id = request.user.landlordprofile.id)
         except ObjectDoesNotExist:
             messages.success(request, f'{request.user.username} Create Your Profile First !')
             return redirect('/management/profile/')
         return render(request, 'pages/dashboard.html', {
+            'hostelpaymentplan':hostelpaymentplan,
+            'hostelpaymentplan_for_payment_display_qs':hostelpaymentplan_for_payment_display_qs,
+            'hostel_payment_filter_qs':hostel_payment_filter_qs,
             'hostel_plan':hostel_plan,
+            'hostel_payments':hostel_payments,
+            'landlordprofile': landlordprofile,
+            'total_no_of_rooms':total_no_of_rooms,
         })
 
 @login_required(login_url='/management/login/')
@@ -161,8 +175,6 @@ def dashboard_landlord_profile(request):
             context['form'] = form
             context['user_qs'] = user_qs       
         return render(request, 'pages/my_profile.html', context)
-
-
 
 
 def loguot_landlord(request): 

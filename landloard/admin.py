@@ -12,8 +12,15 @@ class HostelHomePageModelAdmin(admin.ModelAdmin):
         model = HostelHomePage
 admin.site.register(HostelHomePage, HostelHomePageModelAdmin)
 
+class LandlordProfileModelAdmin(admin.ModelAdmin):
+    list_display = ["hostel_name","user","your_phone_number"]
+    list_display_links = ["hostel_name"]
+    list_filter = ["hostel_name"]
+    search_fields = ["hostel_name","user"]
+    class Meta:
+        model = LandlordProfile
+admin.site.register(LandlordProfile, LandlordProfileModelAdmin)
 
-admin.site.register(LandlordProfile)
 admin.site.register(HostelService)
 admin.site.register(HostelGallary)
 admin.site.register(HostelContact)

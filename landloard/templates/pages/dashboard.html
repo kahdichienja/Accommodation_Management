@@ -18,22 +18,36 @@
                         <div class="col s3" style="margin-bottom: 1rem">
                             <i class="material-icons light-green-text medium">receipt</i>
                             <p>Receipt</p>
-                            <p>21</p>
+                            <p>
+                                {{hostel_payments.count}} 
+                            </p>
                         </div>
                         <div class="col s3" style="margin-bottom: 1rem">
                             <i class="material-icons medium lime-text">payment</i>
                             <p>Payments</p>
-                            <p>21</p>
+                            <p>
+                                {% if hostel_payments.hostel_name == landlordprofile.hostel_name %}
+                                    {{hostel_payments.count}}
+                                {% endif %}  
+                            </p>
                         </div>
                         <div class="col s3" style="margin-bottom: 1rem">
                             <i class="material-icons medium light-blue-text">location_city</i>
                             <p>Total Rooms</p>
-                            <p>21</p>
+                            <p>  
+                                {% for total in total_no_of_rooms %}
+                                    {% if landlordprofile.hostel_name == total_no_of_rooms.hostel_name %}
+                                    <blockquote>
+                                        {{total.hostel_name}}:{{total.total_no_of_rooms}}
+                                    </blockquote>
+                                    {% endif %}     
+                                {% endfor %}   
+                            </p>
                         </div>
                         <div class="col s3" style="margin-bottom: 1rem">
                             <i class="material-icons medium  blue-grey-text">people</i>
                             <p>Total Tenants</p>
-                            <p>28</p>
+                            <p>{{hostelpaymentplan.count}}</p>
                         </div>
                     </div>
                 </div>
@@ -42,39 +56,40 @@
         <ul class="collapsible">
             <li>
                 <div class="collapsible-header">
-                    Payment Components Component
+                    Hostel Payments Components
                     <span class="badge"><i class="material-icons">arrow_drop_down</i></span>
                 </div>
                 <div class="collapsible-body">
                     <div class="card-content">
-                        
-                        {% for plan in hostel_plan %} 
-                        <h5>{{plan.hostel_name}}: Plans</h5>
-                            <blockquote>
-                                <div class="card center" style="padding: 1rem;">
-                                    <h6>Single Room Description</h6>
-                                    <h5>Price : {{plan.single_room_payment_price}}</h5>
-                                    <h5>Pay Bill : {{plan.mpesa_shotcode}}</h5>
-                                    <p>{{plan.single_room_desc}}</p>
-                                </div>
-                            </blockquote>  
-                            <blockquote>
-                                <div class="card center" style="padding: 1rem;">
-                                    <h6>Double Room Description</h6>
-                                    <h5>Price : {{plan.double_room_payment_price}}</h5>
-                                    <h5>Pay Bill : {{plan.mpesa_shotcode}}</h5>
-                                    <p>{{plan.double_room_desc}}</p>
-                                </div>
-                            </blockquote>  
-                            <blockquote>
-                                <div class="card center" style="padding: 1rem;">
-                                    <h6>Self Contained</h6>
-                                    <h5>Price : {{plan.self_contained_payment_price}}</h5>
-                                    <h5>Pay Bill : {{plan.mpesa_shotcode}}</h5>
-                                    <p>{{plan.self_contained}}</p>
-                                </div>
-                            </blockquote> 
-                        {% endfor %}
+                        <blockquote>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tenanat Name</th>
+                                        <th>Payment Plan</th>
+                                        <th>Amount Paid</th>
+                                        <th>Is Paid</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for paymentplan in hostelpaymentplan_for_payment_display_qs %}
+                                    
+                                    {% if landlordprofile.id == hostelpaymentplan_for_payment_display_qs.paymentplan_id %}
+                                        yes
+                                    {% endif %}
+                                        
+                                        <tr>
+                                            <td>
+                                                {{paymentplan.tenant}}
+                                            </td>
+                                            <td>{{paymentplan.paymentplan}}</td>
+                                            <td>{{paymentplan.amountpaid}}</td>
+                                            <td>False</td>
+                                        </tr>
+                                    {% endfor %}
+                            </tbody>
+                            </table>
+                        </blockquote> 
                     </div>
                 </div>
             </li>
