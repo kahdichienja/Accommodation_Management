@@ -192,7 +192,7 @@ def payments(request):
                 "PartyA": phone_number,
                 "PartyB": keys.business_short_code,
                 "PhoneNumber": phone_number,
-                "CallBackURL": "https://m-pay.herokuapp.com/api/payments/lnm/",
+                "CallBackURL": "https://accomodations.herokuapp.com/api/payments/lnm/",
                 "AccountReference": "Test004Clinton",
                 "TransactionDesc": "Rent pay"
             }
