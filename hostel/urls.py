@@ -22,4 +22,5 @@ urlpatterns = [
     path('hostels/', include('tenants.urls')),
     path('user/', include('Profile.urls')),
     path('', include('system.urls')),
+     path('api/payments/', include('mpesa.api.urls')),
 ]
