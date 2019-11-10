@@ -1,1 +1,1 @@
-web: gunicorn daraja.wsgi --log-file -
+web: gunicorn hostel.wsgi --log-file -
