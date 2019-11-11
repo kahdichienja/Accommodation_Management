@@ -65,8 +65,8 @@
                                         Register</a>
                                     <i class="ddl-switch fa fa-angle-down"></i>
                                     <ul class="dropdown-menu">
-                                        <li><a title="your details" href="">Login</a></li>
-                                        <li><a title="your details" href="">Register</a></li>
+                                        <li><a title="your details" href="/user/">Login</a></li>
+                                        <li><a title="your details" href="/user/register/">Register</a></li>
                                     </ul>
                                 </li>
                                 <li><a title="" href="#hostelslists">Hostels</a></li>
@@ -106,7 +106,7 @@
                                 Hostel Payment<span>And Booking Online Manage</span></h3>
                             <p data-animation="animated bounceInRight" class="animated bounceInRight">We belive
                                 nothing is more important than life.</p>
-                            <a href="" title="Register" data-animation="animated zoomInUp"
+                            <a href="/user/register/" title="Register" data-animation="animated zoomInUp"
                                 class="animated zoomInUp">Register</a>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
         {% for landlord_profile in landlord_profile_qs %}            
         <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="welcome-box animated fadeInRight">
-                <img src="{% static 'img/welcome1.jpg' %}" alt="welcome1" width="370" height="440">
+                <img src="/hostels{{landlord_profile.your_picture.url}}" alt="welcome1" width="370" height="440">
                 <div class="welcome-title">
                     <h3>Hostel Name: {{landlord_profile.hostel_name}}</h3>
                 </div>
@@ -141,8 +141,8 @@
                     <span>Location: {{landlord_profile.hostel_location}}</span>
                     <p></p>
                     <ul class="course-detail">
-                        <li><i class="fa fa-phone" aria-hidden="true"></i>Owner: <span>{{landlord_profile.your_phone_number}} </span></li>
-                        <li><i class="fa fa-user" aria-hidden="true"></i>Contact: <span>{{landlord_profile.your_full_name}} </span></li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i>Phone: <span>{{landlord_profile.your_phone_number}} </span></li>
+                        <li><i class="fa fa-user" aria-hidden="true"></i>Name: <span>{{landlord_profile.your_full_name}} </span></li>
                     </ul>
                     <ul class="course-rating">
                         <li><a href="#" title="1 Star"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
