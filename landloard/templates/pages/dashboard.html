@@ -19,16 +19,14 @@
                             <i class="material-icons light-green-text medium">receipt</i>
                             <p>Receipt</p>
                             <p>
-                                {{hostel_payments.count}} 
+                                    {{hostelpaymentplan.count}}
                             </p>
                         </div>
                         <div class="col s3" style="margin-bottom: 1rem">
                             <i class="material-icons medium lime-text">payment</i>
                             <p>Payments</p>
                             <p>
-                                {% if hostel_payments.hostel_name == landlordprofile.hostel_name %}
-                                    {{hostel_payments.count}}
-                                {% endif %}  
+                                {{hostelpaymentplan.count}} 
                             </p>
                         </div>
                         <div class="col s3" style="margin-bottom: 1rem">
@@ -72,12 +70,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for paymentplan in hostelpaymentplan_for_payment_display_qs %}
                                     
-                                    {% if landlordprofile.id == hostelpaymentplan_for_payment_display_qs.paymentplan_id %}
-                                        
-                                    {% endif %}
-                                        
+                                    {% comment %} 
+                                    {% for paymentplan in hostelpaymentplan_for_payment_display_qs %}
+                                    {% if hostel_plan.hostel_plan_id == hostelpaymentplan_for_payment_display_qs.paymentplan_id %}
                                         <tr>
                                             <td>
                                                 {{paymentplan.tenant}}
@@ -86,8 +82,22 @@
                                             <td>{{paymentplan.amountpaid}}</td>
                                             <td>False</td>
                                         </tr>
+                                    {% endif %}
+                                    {% endfor %}  
+                                    {% endcomment %}
+                                    
+                                    {% for pay in hostelpaymentplan %}
+                                        <tr>
+                                            <td>
+                                                {{pay.tenant}}
+                                            </td>
+                                            <td>{{pay.paymentplan}}</td>
+                                            <td>{{pay.amountpaid}}</td>
+                                            <td>False</td>
+                                        </tr>
                                     {% endfor %}
-                            </tbody>
+                                                                              
+                                </tbody>
                             </table>
                         </blockquote> 
                     </div>
