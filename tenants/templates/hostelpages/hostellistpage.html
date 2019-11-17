@@ -77,10 +77,11 @@
                 <!-- Navigation /- -->
                 <div class="menu-search">
                     <div id="sb-search" class="sb-search">
-                        <form>
-                            <input class="sb-search-input" placeholder="Search Hostels, Places and Universities..." type="text" value=""
-                                name="search" id="search">
-                            <button class="sb-search-submit"><i class="fa fa-search"></i></button>
+                            <form method="POST" action="/">
+                                {% csrf_token %}
+                            <input class="sb-search-input" placeholder="Search Location Or Universities..." type="text" value=""
+                                name="q" id="search">
+                            <button type="submit" class="sb-search-submit"><i class="fa fa-search"></i></button>
                             <span class="sb-icon-search"></span>
                         </form>
                     </div>

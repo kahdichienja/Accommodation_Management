@@ -1,0 +1,38 @@
+{% extends 'root_base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section class="ftco-section goto-here">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+                <span class="subheading">All Search Query</span>
+                <h2 class="mb-2">{{hostel_location_qs.count}} Record(s) Matches Your Search Query</h2>
+            </div>
+        </div>
+        <div class="row">
+            
+            {% for hostel_location in hostel_location_qs %}
+                
+            <div class="col-md-4">
+                <div class="property-wrap ftco-animate">
+                    <img src="{{hostel_location.your_picture.url}}" alt="welcome1" width="370" height="440">
+                <div class="text">
+                    <h3><a href="/hostels/list/{{hostel_location.id}}">Hostel Name: {{ hostel_location.hostel_name }} <small> Location: {{ hostel_location.hostel_location }}</small></a></h3>
+                    <p class="price">
+                    Owner Phone Number: {{ hostel_location.your_phone_number }}
+                    </p>
+                    
+                    <a href="/hostels/list/{{hostel_location.id}}" class="d-flex align-items-center justify-content-center btn-custom">
+                        <span class="location">More</span>
+                    </a>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
