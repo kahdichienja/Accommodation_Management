@@ -22,3 +22,9 @@ def system_root_page(request):
         return render(request, 'system_home.html', context)
 
 
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/media'
+# STATICFILES_DIRS = [BASE_DIR+"/assets",]
+# STATIC_ROOT = "/home/jersmexa/myproject/public/static"
+# MEDIA_ROOT = "/home/jersmexa/myproject/public/media"
+
